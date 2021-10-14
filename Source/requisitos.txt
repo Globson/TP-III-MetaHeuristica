@@ -1,0 +1,10 @@
+autopep8
+deap
+graphviz
+numpy
+pandas
+pycodestyle
+python-dateutil
+pytz
+six
+toml
