@@ -11,6 +11,7 @@ Referências utilizadas:
 import matplotlib.pyplot as plt
 from numpy.random import seed, rand, randn
 from numpy import sin, sqrt, asarray, mean, std
+from Source.code import *
 
 #1
 Resultados_Treinamento_A = []
@@ -18,6 +19,10 @@ Resultados_Treinamento_B = []
 #2
 Resultados_Teste_A = []
 Resultados_Teste_B = []
+
+Melhor_Resultados_Teste_A = None
+
+Melhor_Resultados_Teste_B = None
 
 #fazer 30 vezes para cada funcao objetivo e algoritmo, adicionar em listas correspondentes
 '''for i in range(30):'''
