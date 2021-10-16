@@ -46,7 +46,6 @@ for i in df:
 #print(df.to_numpy().tolist())
 df = df.drop('IDCliente',axis=1)
 spam=df.to_numpy().tolist()
-
 #print(df.info())
 train, test = train_test_split(spam, random_state=42)
 # defined a new primitive set for strongly typed GP
@@ -133,9 +132,10 @@ def main():
 
 if __name__ == "__main__":
     _,_,tree = main()
+    tree = tree[0]
     func = toolbox.compile(expr=tree)
-    result_test = sum(bool(func(*customer[:30])) is bool(customer[30]) for customer in test) / len(test)
-    result_train = sum(bool(func(*customer[:30])) is bool(customer[30]) for customer in train) / len(train)
+    result_test = sum(bool(func(*customer[:19])) is bool(customer[19]) for customer in test) / len(test)
+    result_train = sum(bool(func(*customer[:19])) is bool(customer[19]) for customer in train) / len(train)
     print(result_test)
     print(result_train)
 
