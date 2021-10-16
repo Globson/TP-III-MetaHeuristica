@@ -15,7 +15,8 @@ for i in df:
     if(dtype(df[i])=='object'):
         df[i] = le.fit_transform(df[i])
 #print(df.head(10))
-
-X_train, X_test, Y_train, Y_test = train_test_split(df,df['Churn'], random_state=42, test_size=0.3)
+Churn = df[['Churn']]
+df = df.drop('Churn', axis=1)
+X_train, X_test, Y_train, Y_test = train_test_split(df,Churn, random_state=42, test_size=0.3)
 
 
