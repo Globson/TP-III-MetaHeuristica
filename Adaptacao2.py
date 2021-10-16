@@ -46,6 +46,7 @@ for i in df:
 #print(df.to_numpy().tolist())
 df = df.drop('IDCliente',axis=1)
 spam=df.to_numpy().tolist()
+
 #print(df.info())
 train, test = train_test_split(spam, random_state=42)
 # defined a new primitive set for strongly typed GP
