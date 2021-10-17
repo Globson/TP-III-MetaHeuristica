@@ -53,9 +53,9 @@ for i in range(30):
     Resultados_Teste_B.append(result_test)
     hof_B.append(hof)
 
-Melhor_Resultados_Teste_A = max(Resultados_Teste_A)
+Melhor_Resultados_Teste_A = hof_A[Resultados_Teste_A.index(max(Resultados_Teste_A))]
 
-Melhor_Resultados_Teste_B = max(Resultados_Teste_B)
+Melhor_Resultados_Teste_B = hof_B[Resultados_Teste_B.index(max(Resultados_Teste_B))]
 
 archive.write("\n----------------------")
 archive.write("\nResultados Treinamento - Config A:")

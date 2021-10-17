@@ -1,4 +1,0 @@
-
-Configuracoes:
-----------------------
-Funcao Objetivo 1 - AG  Config A:
