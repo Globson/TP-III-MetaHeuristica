@@ -27,6 +27,7 @@ from deap import creator
 from deap import tools
 from deap import gp
 from Source.code import *
+from Source.leitura import *
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 # Read the spam list features and put it in a list of lists.
@@ -37,20 +38,22 @@ from sklearn.model_selection import train_test_split
 LABELS = {'IN10': 'ServicoInternet_Fibra', 'IN11': 'ServicoInternet_Nao', 'IN12': 'ServicoSegurancaOnline_SemInternet', 'IN13': 'ServicoSegurancaOnline', 'IN14': 'ServicoBackupOnline_SemInternet', 'IN15': 'ServicoBackupOnline', 'IN16': 'ProtecaoEquipamento_SemInternet', 'IN17': 'ProtecaoEquipamento', 'IN18': 'ServicoSuporteTecnico_SemInternet', 'IN19': 'ServicoSuporteTecnico', 'IN20': 'ServicoStreamingTV_SemInternet', 'IN21': 'ServicoStreamingTV', 'IN22': 'ServicoFilmes_SemInternet', 'IN23': 'ServicoFilmes', 'IN24': 'TipoContrato_Anual', 'IN25': 'TipoContrato_Mensal', 'IN26': 'FaturaDigital', 'IN27': 'FormaPagamento_BoletoImpresso', 'IN28': 'FormaPagamento_CartaoCredito', 'IN29': 'FormaPagamento_DebitoAutomatico', 'IN30': 'Churn', 'IN0': 'MesesComoCliente', 'IN1': 'ValorMensal', 'IN2': 'TotalGasto', 'IN3': 'GeneroMasculino', 'IN4': 'Casado', 'IN5': 'Aposentado', 'IN6': 'Dependentes', 'IN7': 'ServicoTelefone', 'IN8': 'MultiplasLinhas_SemTelefone', 'IN9': 'MultiplasLinhas'}
 #print(le_arq("./Data/telecom_users.csv"))
 df = le_arq("./Data/telecom_users.csv")
+#df = df.drop('IDCliente',axis=1)
 le = preprocessing.LabelEncoder()
+#display(df["Churn"].value_counts())
+#display(df["Churn"].value_counts(normalize=True).map("{:.1%}".format))
 
 for i in df:
     if(dtype(df[i]) == 'object'):
         df[i] = le.fit_transform(df[i])
 
 #print(df.to_numpy().tolist())
-df = df.drop('IDCliente',axis=1)
 spam=df.to_numpy().tolist()
 
 #print(df.info())
 train, test = train_test_split(spam, random_state=42)
 # defined a new primitive set for strongly typed GP
-pset = gp.PrimitiveSetTyped("MAIN", list(itertools.repeat(int, 17)) + list(itertools.repeat(float, 2)), int, "IN")
+pset = gp.PrimitiveSetTyped("MAIN", list(itertools.repeat(int, 17)) + list(itertools.repeat(float, 2)), bool, "IN")
 
 # boolean operators
 pset.addPrimitive(operator.and_, [bool, bool], bool)
@@ -81,13 +84,13 @@ pset.addPrimitive(if_then_else, [bool, float, float], float)
 # terminals
 pset.addEphemeralConstant("rand100", lambda: random.random() * 100, float)
 pset.addTerminal(False, bool)
-pset.addTerminal(True, bool)
+#pset.addTerminal(True, bool)
 
 creator.create("FitnessMax", base.Fitness, weights=(1.0,))
 creator.create("Individual", gp.PrimitiveTree, fitness=creator.FitnessMax)
 
 toolbox = base.Toolbox()
-toolbox.register("expr", gp.genHalfAndHalf, pset=pset, min_=1, max_=2)
+toolbox.register("expr", gp.genHalfAndHalf, pset=pset, min_=5, max_=5)
 toolbox.register("individual", tools.initIterate, creator.Individual, toolbox.expr)
 toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 toolbox.register("compile", gp.compile, pset=pset)
@@ -118,7 +121,7 @@ toolbox.register("expr_mut", gp.genFull, min_=0, max_=2)
 toolbox.register("mutate", gp.mutUniform, expr=toolbox.expr_mut, pset=pset)
 
 def main():
-    random.seed(10)
+    random.seed()
     pop = toolbox.population(n=100)
     hof = tools.HallOfFame(1)
     stats = tools.Statistics(lambda ind: ind.fitness.values)
@@ -132,12 +135,14 @@ def main():
     return pop, stats, hof
 
 if __name__ == "__main__":
-    _,_,tree = main()
-    tree = tree[0]
-    func = toolbox.compile(expr=tree)
-    result_test = sum(bool(func(*customer[:19])) is bool(customer[19]) for customer in test) / len(test)
-    result_train = sum(bool(func(*customer[:19])) is bool(customer[19]) for customer in train) / len(train)
-    print(result_test)
-    print(result_train)
+    for i in range(30):    
+        _, _, tree = main()
+        tree = tree[0]
+        func = toolbox.compile(expr=tree)
+        result_test = sum(bool(func(*customer[:19])) is bool(customer[19]) for customer in test) / len(test)
+        result_train = sum(bool(func(*customer[:19])) is bool(customer[19]) for customer in train) / len(train)
+        print(i,"-> Result Test: ", result_test)
+        print(i,"-> Result Train: ",result_train)
+        print(i,"-> Hof: ",tree)
 
 
