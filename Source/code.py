@@ -1,29 +1,21 @@
-from Source.leitura import *
-from numpy import dtype
 import random
 import operator
-import csv
 import itertools
-
-import numpy
-
-from deap import algorithms
-from deap import base
-from deap import creator
-from deap import tools
-from deap import gp
+import numpy as np
+from deap import algorithms, base, creator, tools, gp
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
+from Source.leitura import *
 
 df = le_arq("./Data/telecom_users.csv")
 le = preprocessing.LabelEncoder()
 for i in df:
-    if(dtype(df[i]) == 'object'):
+    if(np.dtype(df[i]) == 'object'):
         df[i] = le.fit_transform(df[i])
 
-spam=df.to_numpy().tolist()
+customers=df.to_numpy().tolist()
 
-train, test = train_test_split(spam, random_state=42)
+train, test = train_test_split(customers, random_state=42)
 # defined a new primitive set for strongly typed GP
 pset = gp.PrimitiveSetTyped("MAIN", list(itertools.repeat(int, 17)) + list(itertools.repeat(float, 2)), bool, "IN")
 
@@ -67,16 +59,16 @@ toolbox.register("individual", tools.initIterate, creator.Individual, toolbox.ex
 toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 toolbox.register("compile", gp.compile, pset=pset)
 
-def evalSpambaseTrain(individual):
+def evalcustomersbaseTrain(individual):
     # Transform the tree expression in a callable function
     func = toolbox.compile(expr=individual)
-    # Randomly sample 400 mails in the spam database
+    # Randomly sample 400 customers in the customers database
     train_samp = random.sample(train, 400)
-    # Evaluate the sum of correctly identified mail as spam
-    result = sum(bool(func(*mail[:19])) is bool(mail[19]) for mail in train_samp)
+    # Evaluate the sum of correctly identified customer as customers
+    result = sum(bool(func(*customer[:19])) is bool(customer[19]) for customer in train_samp)
     return result, 
 
-toolbox.register("evaluate", evalSpambaseTrain)
+toolbox.register("evaluate", evalcustomersbaseTrain)
 toolbox.register("select", tools.selTournament, tournsize=3)
 toolbox.register("mate", gp.cxOnePoint)
 toolbox.register("expr_mut", gp.genFull, min_=0, max_=2)
@@ -87,10 +79,10 @@ def main(conf=True):
     pop = toolbox.population(n=100)
     hof = tools.HallOfFame(1)
     stats = tools.Statistics(lambda ind: ind.fitness.values)
-    stats.register("avg", numpy.mean)
-    stats.register("std", numpy.std)
-    stats.register("min", numpy.min)
-    stats.register("max", numpy.max)
+    stats.register("avg", np.mean)
+    stats.register("std", np.std)
+    stats.register("min", np.min)
+    stats.register("max", np.max)
     
     if(conf):
         algorithms.eaSimple(pop, toolbox, 0.5, 0.2, 40, stats, halloffame=hof, verbose=None)
