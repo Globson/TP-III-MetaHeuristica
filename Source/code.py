@@ -95,7 +95,7 @@ def main(conf=True):
     if(conf):
         algorithms.eaSimple(pop, toolbox, 0.5, 0.2, 40, stats, halloffame=hof, verbose=None)
     else:    
-        algorithms.eaMuCommaLambda(pop, toolbox, 100, 100, 0.5, 0.1, 40, stats, halloffame=hof, verbose=None)
+        algorithms.eaMuPlusLambda(pop, toolbox, 100, 100, 0.5, 0.1, 40, stats, halloffame=hof, verbose=None)
         
     return pop, stats, hof
 

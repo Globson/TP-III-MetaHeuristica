@@ -1,0 +1,29 @@
+
+Configuracoes:
+----------------------
+Resultados Treinamento - Config A:
+Min: 0.7357142857142858
+Max: 0.7875
+Media: 0.7582291666666667
+Std: 0.013515771945021892
+
+Resultados Treinamento - Config B:
+Min: 0.7357142857142858
+Max: 0.7850446428571428
+Media: 0.7491443452380953
+Std: 0.01418187747892495
+----------------------
+Resultados Teste - Config A:
+Min: 0.7302543507362784
+Max: 0.7958500669344043
+Media: 0.7578536367692994
+Std: 0.01616128230582207
+
+Resultados Teste - Config B:
+Min: 0.7302543507362784
+Max: 0.7777777777777778
+Media: 0.7456492637215529
+Std: 0.015498362240926458
+----------------------
+Melhor resultado Teste - Config A:lt(sub(add(add(if_then_else(False, 27.14178716431367, IN18), if_then_else(False, IN18, IN17)), if_then_else(and_(False, False), 80.12401996163686, add(5.4327264811876, IN17))), if_then_else(False, 27.14178716431367, IN18)), protectedDiv(sub(add(if_then_else(not_(False), IN18, IN17), protectedDiv(IN17, IN17)), mul(mul(protectedDiv(protectedDiv(64.92876974404105, IN17), add(41.594685496739444, IN17)), protectedDiv(mul(IN18, IN18), add(IN17, IN18))), protectedDiv(IN18, IN17))), mul(protectedDiv(protectedDiv(64.92876974404105, IN17), add(41.594685496739444, IN17)), protectedDiv(mul(IN18, IN18), add(IN17, IN18)))))
+Melhor resultado Teste - Config B:lt(protectedDiv(add(sub(protectedDiv(IN18, IN17), sub(53.382926921133375, IN18)), add(if_then_else(False, IN18, 84.72488423044017), add(IN18, 17.74200575343047))), protectedDiv(add(mul(IN18, 65.8808909539616), sub(20.52676145251099, IN18)), mul(mul(IN17, 42.25102916437267), sub(68.40516570403254, IN17)))), add(add(protectedDiv(mul(IN18, IN17), mul(9.401500413398988, IN17)), protectedDiv(mul(IN17, IN17), add(IN17, IN18))), protectedDiv(mul(sub(1.8511238397593832, IN18), sub(IN18, IN17)), add(add(IN17, 11.338159394122204), protectedDiv(IN17, IN18)))))

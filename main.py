@@ -27,14 +27,13 @@ Melhor_Resultados_Teste_A = None
 Melhor_Resultados_Teste_B = None
 
 
-archive = open('Resultados.txt', 'w')
-archive.write("\nConfiguracoes:")
+
 print("Configuracoes:")
 
 
 print("Executando 30 iteracoes...")
 #fazer 30 vezes para cada funcao objetivo e algoritmo, adicionar em listas correspondentes
-for i in range(30):    
+for i in range(30):
     _, _, hof = main()
     hof = hof[0]
     func = toolbox.compile(expr=hof)
@@ -56,7 +55,8 @@ for i in range(30):
 Melhor_Resultados_Teste_A = hof_A[Resultados_Teste_A.index(max(Resultados_Teste_A))]
 
 Melhor_Resultados_Teste_B = hof_B[Resultados_Teste_B.index(max(Resultados_Teste_B))]
-
+archive = open('Resultados.txt', 'w')
+archive.write("\nConfiguracoes:")
 archive.write("\n----------------------")
 archive.write("\nResultados Treinamento - Config A:")
 archive.write("\nMin: " + str(min(Resultados_Treinamento_A)))
