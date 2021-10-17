@@ -3,27 +3,27 @@ Configuracoes:
 ----------------------
 Resultados Treinamento - Config A:
 Min: 0.7357142857142858
-Max: 0.7926339285714286
-Media: 0.7608556547619048
-Std: 0.013206979375576341
+Max: 0.7825892857142858
+Media: 0.7572321428571428
+Std: 0.013447507545403095
 
 Resultados Treinamento - Config B:
-Min: 0.7292410714285714
-Max: 0.7734375
-Media: 0.7465625000000002
-Std: 0.01356543080969862
+Min: 0.7305803571428572
+Max: 0.7792410714285715
+Media: 0.7499702380952381
+Std: 0.01388956560142798
 ----------------------
 Resultados Teste - Config A:
 Min: 0.7302543507362784
-Max: 0.7951807228915663
-Media: 0.759772423025435
-Std: 0.014932374034199137
+Max: 0.7884872824631861
+Media: 0.7573627844712182
+Std: 0.01630852330583185
 
 Resultados Teste - Config B:
-Min: 0.7275769745649264
-Max: 0.7757697456492637
-Media: 0.7437751004016063
-Std: 0.01543598889337149
+Min: 0.7235609103078983
+Max: 0.7904953145917001
+Media: 0.7480589022757697
+Std: 0.01681959163965616
 ----------------------
-Melhor resultado Teste - Config A:lt(sub(mul(protectedDiv(IN18, 48.037875639181614), protectedDiv(if_then_else(False, 40.28709385086356, sub(protectedDiv(15.60473870487391, IN18), protectedDiv(0.1958883007619372, add(IN17, 74.67838383267859)))), add(IN18, 8.241116894641964))), protectedDiv(sub(sub(IN17, IN18), mul(IN17, IN17)), if_then_else(eq(IN17, IN18), sub(IN18, IN18), protectedDiv(78.96164214322845, 59.070296774853915)))), sub(protectedDiv(sub(protectedDiv(15.60473870487391, IN18), protectedDiv(0.1958883007619372, IN18)), mul(protectedDiv(7.556955400785325, sub(mul(protectedDiv(IN18, 48.037875639181614), protectedDiv(if_then_else(False, 40.28709385086356, add(58.959370197032236, IN17)), add(IN18, 97.85929307780708))), protectedDiv(sub(sub(IN17, IN18), mul(IN17, IN17)), if_then_else(False, 11.167203635762569, protectedDiv(78.96164214322845, 59.070296774853915))))), mul(IN17, IN17))), add(mul(sub(52.275663698580324, IN17), add(80.97710556492027, IN17)), protectedDiv(mul(IN17, protectedDiv(sub(sub(IN17, IN18), mul(IN17, IN17)), if_then_else(eq(IN17, IN18), sub(0.1958883007619372, IN18), protectedDiv(78.96164214322845, 59.070296774853915)))), if_then_else(False, IN17, IN18)))))
-Melhor resultado Teste - Config B:lt(mul(if_then_else(eq(protectedDiv(IN18, IN17), mul(IN18, IN17)), protectedDiv(mul(IN17, IN18), if_then_else(or_(not_(not_(eq(54.19172827852014, IN18))), or_(eq(add(60.28740911917894, IN17), add(IN17, IN18)), and_(not_(False), not_(False)))), 1.2437431122673925, IN18)), sub(if_then_else(False, IN17, IN17), sub(IN18, IN17))), mul(if_then_else(or_(False, False), if_then_else(False, IN17, IN17), protectedDiv(16.440556593940137, IN18)), sub(sub(IN17, 74.54913522681379), protectedDiv(IN18, IN17)))), sub(mul(mul(protectedDiv(IN17, IN17), sub(IN18, IN18)), mul(if_then_else(False, IN17, IN17), protectedDiv(48.7971702797256, IN18))), if_then_else(eq(mul(IN17, IN18), protectedDiv(IN18, 25.849614521184538)), add(mul(IN18, 96.41603412036793), if_then_else(False, IN18, 56.3400267791459)), sub(protectedDiv(IN17, IN17), if_then_else(False, if_then_else(False, IN17, IN17), 53.63530870900275)))))
+Melhor resultado Teste - Config A:and_(or_(or_(eq(mul(IN17, 58.94469724402727), add(29.033177501148256, 94.87560324153276)), eq(if_then_else(False, 2.480592600353948, IN17), IN18)), lt(mul(protectedDiv(IN18, IN17), if_then_else(False, IN18, 5.430612706422943)), sub(if_then_else(not_(lt(8.744020511438721, IN18)), 99.90945391170807, IN17), 34.013119362123156))), or_(and_(and_(lt(if_then_else(False, IN18, 15.385033837247885), 34.013119362123156), or_(False, False)), and_(or_(False, False), or_(False, False))), lt(sub(if_then_else(False, IN17, IN18), add(40.5304706225032, 73.02706109642561)), IN18)))
+Melhor resultado Teste - Config B:or_(lt(mul(sub(protectedDiv(IN17, IN18), protectedDiv(IN18, IN17)), add(sub(99.15850920422471, 99.29354487823086), sub(IN17, 16.248382229775483))), add(mul(protectedDiv(IN17, 29.607747514441172), protectedDiv(IN18, 66.92954482453844)), sub(protectedDiv(IN18, 23.304941287215343), sub(IN18, IN17)))), lt(if_then_else(eq(protectedDiv(IN18, 0.8128352330045607), add(38.34554317170069, IN18)), if_then_else(or_(False, or_(False, False)), protectedDiv(IN18, IN18), add(IN18, IN18)), mul(IN18, add(IN17, IN18))), add(if_then_else(eq(68.10680625219115, IN18), if_then_else(False, 72.57466967122363, IN18), sub(IN17, 75.33359011633036)), add(add(IN18, IN18), add(41.9784705185622, 95.95199513024568)))))

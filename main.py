@@ -12,18 +12,15 @@ import matplotlib.pyplot as plt
 from numpy import mean, std
 from Source.code import *
 
-#1
+
 Resultados_Treinamento_A = []
 Resultados_Treinamento_B = []
-hof_A = []
-
-#2
 Resultados_Teste_A = []
 Resultados_Teste_B = []
+hof_A = []
 hof_B = []
 
 Melhor_Resultados_Teste_A = None
-
 Melhor_Resultados_Teste_B = None
 
 
